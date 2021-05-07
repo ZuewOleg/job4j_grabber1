@@ -45,6 +45,7 @@ public class AlertRabbitJobParameters {
     public static void main(String[] args) throws Exception {
         AlertRabbitJobParameters rabbit = new AlertRabbitJobParameters();
         try {
+            int interval = rabbit.getInterval();
             // Конфигурирование
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
@@ -56,7 +57,7 @@ public class AlertRabbitJobParameters {
                     .build();
             // // Создание расписания
             SimpleScheduleBuilder times = simpleSchedule()
-                    .withIntervalInSeconds(5)
+                    .withIntervalInSeconds(interval)
                     .repeatForever();
             // Конструкция выше настраивает периодичность запуска.
             // В нашем случае, мы будем запускать задачу через 10 секунд(как указанно в файле rabbit.properties)
