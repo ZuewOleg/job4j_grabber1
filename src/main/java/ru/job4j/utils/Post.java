@@ -11,6 +11,7 @@ public class Post {
     private int replies;
     private int views;
     private LocalDateTime postDate;
+    private String nameVacancy;
     // много полей -> используем класс Builder
 
     public static class Builder {
@@ -55,6 +56,11 @@ public class Post {
             return this;
         }
 
+        public Builder builderNameVacancy(String nameVacancy) {
+            post.nameVacancy = nameVacancy;
+            return this;
+        }
+
         public Post build() {
             return post;
         }
@@ -71,12 +77,12 @@ public class Post {
         Post post = (Post) o;
         return Objects.equals(link, post.link) && Objects.equals(topicName, post.topicName)
                 && Objects.equals(author, post.author) && Objects.equals(description, post.description)
-                && Objects.equals(postDate, post.postDate);
+                && Objects.equals(postDate, post.postDate) && Objects.equals(nameVacancy, post.nameVacancy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(link, topicName, author, description, postDate);
+        return Objects.hash(link, topicName, author, description, postDate, nameVacancy);
     }
 
     @Override
@@ -89,7 +95,7 @@ public class Post {
                 + ", replies=" + replies
                 + ", views=" + views
                 + ", postDate=" + postDate
+                + ", nameVacancy='" + nameVacancy + '\''
                 + '}';
     }
-
 }
