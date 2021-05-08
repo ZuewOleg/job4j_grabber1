@@ -1,9 +1,10 @@
-package ru.job4j.grabber;
+package ru.job4j.html;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import ru.job4j.grabber.Parse;
 import ru.job4j.utils.Post;
 import ru.job4j.utils.SqlRuDateTimeParser;
 
@@ -58,3 +59,4 @@ public class SqlFullParse implements Parse {
         }
     }
 }
+
