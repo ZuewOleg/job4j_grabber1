@@ -16,7 +16,7 @@ public class Post {
     public static class Builder {
         private Post post;
 
-        public Builder(Post post) {
+        public Builder() {
             post =  new Post();
         }
 
