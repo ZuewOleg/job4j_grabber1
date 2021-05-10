@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import ru.job4j.grabber.Parse;
-import ru.job4j.utils.Post;
+import ru.job4j.grabber.Post;
 import ru.job4j.utils.SqlRuDateTimeParser;
 
 import java.io.IOException;
@@ -43,9 +43,9 @@ public class SqlFullParse implements Parse {
             Element data = td.parent();
             rsl = new Post.Builder()
                     .builderLink(href.attr("href"))
-                    .builderNameVacancy(data.child(1).child(0).text())
-                    .builderDescription(row.get(1).text())
-                    .builderPostDate(parse(data.child(5).text()))
+                    .builderName(data.child(1).child(0).text())
+                    .builderText(row.get(1).text())
+                    .builderData(parse(data.child(5).text()))
                     .build();
         }
         return rsl;
