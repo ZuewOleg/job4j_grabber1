@@ -47,4 +47,5 @@ where p.company_id != 5;
 select c.name, count(p) from person p
 join company c on c.id = p.company_id
 group by c.name
-order by count(p) desc;
+order by count(p) desc
+fetch first row only;
