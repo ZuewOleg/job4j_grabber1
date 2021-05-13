@@ -34,17 +34,17 @@ insert into person(id, name, company_id) values (13, 'Naruto', 5);
 insert into person(id, name, company_id) values (14, 'Obito', 6);
 insert into person(id, name, company_id) values (15, 'Satoshi', 6);
 insert into person(id, name, company_id) values (16, 'Hanzo', 6);
+insert into person(id, name, company_id) values (17, 'Hanza', 5);
 
--- имена всех person, которые не состоят в компании с id = 5 --
-select * from person where company_id != 5;
 
--- название компании для каждого человека --
-select c.name as "Название компании", p.name as "Имя сотрудника"
-from company c join person p on c.id = p.company_id;
+-- имена всех person, которые не состоят в компании с id = 5
+-- а также название компании для каждого человека
+select p.name as "Не состоят в 5 компании", c.name as "Название компании, где состоит person"
+from company c left join person p on c.id = p.company_id
+where p.company_id != 5;
 
 -- Название компании с максимальным количеством человек и количество человек в этой компании --
 select c.name, count(p) from person p
 join company c on c.id = p.company_id
 group by c.name
-order by count(p) desc
-fetch first row only;
+order by count(p) desc;
