@@ -7,6 +7,10 @@ import org.jsoup.select.Elements;
 
 import java.time.LocalDateTime;
 
+/** Оставить только один файл properties чтобы не было путаницы
+ * В профилях поменять БД, на ту что создаем сами локально и travis удаленно
+ * В travis прописать необходимую БД
+ */
 public class DownloadPost {
     public static LocalDateTime parse(String dataText) {
         return new SqlRuDateTimeParser().parse(dataText);
