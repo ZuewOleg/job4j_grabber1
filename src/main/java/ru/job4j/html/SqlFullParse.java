@@ -38,13 +38,15 @@ public class SqlFullParse implements Parse {
         Post rsl = null;
         Document doc = Jsoup.connect(link).get();
         Elements row = doc.select(".msgTable");
-        Element href = row.get(0);
-        Element data = row.first();
+        String description = row.first().select(".msgBody").get(1).text();
+        String name = row.first().select(".messageHeader").text();
+        String date = row.last().select(".msgFooter").text();
+        date = date.substring(0, date.indexOf('[') - 1);
             rsl = new Post.Builder()
-                    .builderLink(href.attr("href"))
-                    .builderName(data.child(1).child(0).text())
-                    .builderText(row.get(1).text())
-                    .builderData(parse(data.child(5).text()))
+                    .builderLink(link)
+                    .builderName(name)
+                    .builderText(description)
+                    .builderData(parse(date))
                     .build();
         return rsl;
     }
