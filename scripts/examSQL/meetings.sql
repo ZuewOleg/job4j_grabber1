@@ -46,11 +46,11 @@ left join users u on mu.users_id = u.id
 where mu.status = true;
 
 -- запрос, который получит список всех заяков и количество подтвердивших участников
-select  m.name as "Совещания", count(mu.status) as "Кол-во подтвердивших" from meetings_users mu left join meetings m on mu.meetings_id = m.id
+select  m.name as "Совещания", count(mu.status) as "Кол-во подтвердивших" from meetings m left join meetings_users mu on mu.meetings_id = m.id
 group by mu.status, m.name
 having mu.status = true;
 
 -- все совещания, где не было ни одной заявки на посещения
-select m.name as "Совещания без посещений" from meetings_users mu left join meetings m on mu.meetings_id = m.id
+select m.name as "Совещания без посещений" from meetings m left join meetings_users mu on mu.meetings_id = m.id
 group by mu.status, m.name
 having count(mu.status) = 0;
