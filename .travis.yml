@@ -9,7 +9,7 @@ services:
 before_install:
   - psql -c 'create database post;' -U postgres
 
-# используем режим обычного пользователя для сборки проекта.
+# используем режим обычного пользователя для сборки проекта
 sudo: false
 
 env:
