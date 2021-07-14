@@ -16,6 +16,7 @@ import static org.quartz.SimpleScheduleBuilder.*;
 
 public class AlertRabbit {
     public static void main(String[] args) {
+        // для работы кода нужно создать файл rabbit.properties
         int interval = timeInterval(new File("src/main/resources/rabbit.properties")); // читаем файл
         try {
             // Конфигурирование

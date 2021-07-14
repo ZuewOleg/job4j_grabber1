@@ -35,6 +35,7 @@ public class SqlFullParse implements Parse {
     @Override
     public Post detail(String link) throws IOException { // Метод detail загружает детали одного поста
         // ссылку, вакансию, описание, дату обновления
+        // нужно парсить описание не в виде HTML, а в виде текста, т.е. вызывать метод text()
         Post rsl = null;
         Document doc = Jsoup.connect(link).get();
         Elements row = doc.select(".msgTable");
